@@ -1,44 +1,32 @@
 package forum;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Topic {
 
-    private String name;
-    private String details;
-    private String author;
-    private Date createdDate;
-    private Date modifiedDate;
+    private List<Post> posts = new ArrayList<>();
 
-    private Map<String, Post> posts = new HashMap();
-
-    public Topic() {
-        this.createdDate = new Date();
-        this.modifiedDate = new Date();
+    public Topic(Post post) {
+        post.setId(1);
+        posts.add(post);
     }
 
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
+    public void addPost(Post post) {
+        post.setId(posts.size() + 1);
+        posts.add(post);
     }
 
-    public void addPost(String title) {
-        Post post = new Post();
-        post.setId(Integer.toString(posts.size() + 1));
-        post.setTitle(title);
-        posts.put(post.getId(), post);
+    public Post getPost(Integer id) {
+        return posts.get(id - 1);
     }
 
-    public Post getPost(String id) {
-        return posts.get(id);
+    public List<Post> getAllPosts() {
+        return posts;
     }
 
-    public void deletePost(Post post) {
-        posts.put(post.getId(), null);
+    public void deletePost(Integer id) {
+        posts.get(id - 1).setText("Deleted");
     }
 
 

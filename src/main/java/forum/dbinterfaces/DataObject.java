@@ -1,4 +1,4 @@
-package forum.db;
+package forum.dbinterfaces;
 
 public interface DataObject<T> {
     public void save(T entity);

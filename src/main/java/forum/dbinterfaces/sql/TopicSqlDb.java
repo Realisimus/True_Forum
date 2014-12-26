@@ -1,7 +1,9 @@
-package forum.db.sql;
+package forum.dbinterfaces.sql;
 
 import forum.Topic;
-import forum.db.TopicDataObject;
+import forum.dbinterfaces.TopicDataObject;
+
+import java.util.List;
 
 public class TopicSqlDb implements TopicDataObject{
     @Override
@@ -17,5 +19,10 @@ public class TopicSqlDb implements TopicDataObject{
     @Override
     public void delete(String id) {
 
+    }
+
+    @Override
+    public List<String> getAllTopics() {
+        return null;
     }
 }

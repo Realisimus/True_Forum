@@ -1,4 +1,4 @@
-package forum.db.in_memory;
+package forum.dbinterfaces.in_memory;
 
 import forum.Topic;
 

@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @Controller
 public class ForumController {
@@ -16,8 +18,21 @@ public class ForumController {
     Forum forum;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public ModelAndView allTopics() {
-        return new ModelAndView("forum", "topics", forum.getAllTopics());
+    public ModelAndView login() {
+        return new ModelAndView("login");
+    }
+
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public ModelAndView login(String login, String password, HttpServletResponse response) {
+        User user = forum.getUser(login);
+        if (password.equals(user.password())) {
+            user.setSessionId();
+            Cookie userId = new Cookie("id", user.getSessionId());
+            userId.setMaxAge(1000);
+            response.addCookie(userId);
+            return new ModelAndView("forum", "topics", forum.getAllTopics());
+        } else
+            return new ModelAndView("login", "message", "Login or password is incorrect");
     }
 
     @RequestMapping(value = "/viewTopic", method = RequestMethod.POST)

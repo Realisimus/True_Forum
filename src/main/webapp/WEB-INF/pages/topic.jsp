@@ -5,7 +5,7 @@
         <title>True Forum</title>
     </head>
     <body>
-        <a href="/">Forum</a><br>
+        <a href="/forum">Forum</a><br>
 
         <form method="post" action="searchPosts">
             <input type="text" name="search" size="50" />
@@ -25,6 +25,7 @@
                 <input type="hidden" name="topicName" value="${post.topicName}" />
                 <input type="hidden" name="id" value="${post.id}" />
                 <textarea name="text" cols="32" rows="3" >${post.text}</textarea><br>
+                <h5>Created by ${post.user}</h5>
                 <h6>Created ${post.createdDate}</h6>
                 <h6>Modified ${post.modifiedDate}</h6>
                 <input type="submit" name="button" value="Save post"/>

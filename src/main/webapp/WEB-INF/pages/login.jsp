@@ -5,6 +5,7 @@
         <title>True Forum</title>
     </head>
     <body>
+        <a href="/register">Add new User</a><br>
         <h3>${message}</h3>
         <form method="post" action="login">
             <input type="text" name="login" value="${login}" size="50" /><br>

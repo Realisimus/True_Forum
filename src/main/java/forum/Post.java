@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class Post {
 
+    private String user;
     private String topicName;
     private Integer id;
     private String text;
@@ -18,6 +19,13 @@ public class Post {
         this.topicName = topic;
         this.createdDate = new Date();
         this.modifiedDate = new Date();
+    }
+
+    public String getUser() {
+        return user;
+    }
+    public void setUser(String user) {
+        this.user = user;
     }
 
     public String getTopicName() {

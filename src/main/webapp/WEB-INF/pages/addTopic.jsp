@@ -5,7 +5,7 @@
     </head>
     <body>
         <h2>Adding new topic</h2><br>
-        <a href="/">Return to forum</a>
+        <a href="/forum">Return to forum</a>
         <form:form method="post" action="addTopic">
             <p>Title<br>
             <input type="text" name="topicName" value="${post.topicName}" size="25" />

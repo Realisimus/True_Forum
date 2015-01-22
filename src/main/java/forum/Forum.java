@@ -11,6 +11,14 @@ public class Forum {
         return DataConnector.getUsersDb().getUser(login);
     }
 
+    public User getUserById(String id) {
+        return DataConnector.getUsersDb().getUserById(id);
+    }
+
+    public void addUser(User user) {
+        DataConnector.getUsersDb().addUser(user);
+    }
+
     public void addTopic(Post post) {
         Topic topic = new Topic(post);
         DataConnector.getTopicsDb().save(topic);

@@ -5,7 +5,9 @@
         <title>True Forum</title>
     </head>
     <body>
+        <a href="/logout">${cookie.id.value} logout</a><br><br>
         <a href="/addTopic">Add new Topic</a><br>
+        <a href="/register">Add new User</a><br>
 
         <form method="post" action="searchPosts">
             <input type="text" name="search" size="50" />

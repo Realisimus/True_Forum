@@ -10,7 +10,7 @@
         <form method="post" action="login">
             <input type="text" name="login" value="${login}" size="50" /><br>
             <input type="password" name="password" value="${password}" size="50" /><br>
-            <input type="submit" value="Login"/><br>
+            <input type="submit" name="submit" value="Login"/><br>
         </form>
     </body>
 </html>

@@ -36,7 +36,7 @@ public class ForumController {
             Cookie userId = new Cookie("id", user.getSessionId());
             userId.setMaxAge(3600);
             response.addCookie(userId);
-            return new ModelAndView("forum", "topics", forum.getAllTopics());
+            return forum(user.getSessionId());
         } else
             return new ModelAndView("login", "message", "Login or password is incorrect");
     }
@@ -66,7 +66,9 @@ public class ForumController {
     @RequestMapping(value = "/forum", method = RequestMethod.GET)
     public ModelAndView forum(@CookieValue("id") String cookieId) {
         if (userCheck(cookieId)) return new ModelAndView("login");
-        return new ModelAndView("forum", "topics", forum.getAllTopics());
+        ModelAndView forumView = new ModelAndView("forum", "topics", forum.getAllTopics());
+        forumView.addObject("user", forum.getUserById(cookieId).login());
+        return forumView;
     }
 
     @RequestMapping(value = "/viewTopic", method = RequestMethod.POST)

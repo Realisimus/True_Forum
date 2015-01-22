@@ -1,11 +1,12 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <html lang="en">
     <head>
         <title>True Forum</title>
     </head>
     <body>
-        <a href="/logout">${cookie.id.value} logout</a><br><br>
+        <a href="/logout">${user} logout</a><br><br>
         <a href="/addTopic">Add new Topic</a><br>
         <a href="/register">Add new User</a><br>
 

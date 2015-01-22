@@ -24,8 +24,8 @@ public class ForumController {
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public ModelAndView login() {
-        return new ModelAndView("login");
+    public ModelAndView login(String message) {
+        return new ModelAndView("login", "message", message);
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -38,7 +38,7 @@ public class ForumController {
             response.addCookie(userId);
             return forum(user.getSessionId());
         } else
-            return new ModelAndView("login", "message", "Login or password is incorrect");
+            return login("Login or password is incorrect");
     }
 
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
@@ -46,20 +46,21 @@ public class ForumController {
         Cookie userId = new Cookie("id", "");
         userId.setMaxAge(0);
         response.addCookie(userId);
-        return login();
+        return login("");
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.GET)
-    public ModelAndView register() {
-        return new ModelAndView("register");
+    public ModelAndView register(String message) {
+        return new ModelAndView("register", "message", message);
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public ModelAndView register(String login, String password, String password2) {
-        if (!password.equals(password2)) return new ModelAndView("register", "message", "please input correct passwords");
+        if (!password.equals(password2)) return register("please input correct passwords");
+        if (forum.getUser(login).login() != null) return register("User already exist");
         User user = new User(login, password);
         forum.addUser(user);
-        return new ModelAndView("login", "message", "User was created. Please login to True Forum");
+        return login("User was created. Please login to True Forum");
     }
 
 

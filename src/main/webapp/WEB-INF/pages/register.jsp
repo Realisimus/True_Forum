@@ -12,6 +12,7 @@
             <input type="text" name="login" size="25" />
             <p>Password<br>
             <input type="password" name="password" size="25" /><br>
+            <p>Confirm password<br>
             <input type="password" name="password2" size="25" /><br>
             <input type="submit" value="Register"/>
         </form:form>
